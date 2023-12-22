@@ -1,0 +1,328 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Capybara Clicker</title>
+	<meta name="keywords" content="Capybara Clicker">
+	<meta http-equiv="Accept-CH" content="DPR" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="mask-icon" href="https://capybara-clicker.com/imgs/logo-capybara-clicker.png" color="#6842ff" />
+    <link rel="icon" type="image/png" href="https://capybara-clicker.com/imgs/logo-capybara-clicker-32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="https://capybara-clicker.com/imgs/logo-capybara-clicker-16.png" sizes="16x16" />
+    <link rel="shortcut icon" sizes="196x196" href="https://capybara-clicker.com/imgs/logo-capybara-clicker-196.png" />
+    <meta name="msapplication-TileColor" content="#603cba" />
+    <link rel="icon" type="image/x-icon" href="https://capybara-clicker.com/imgs/logo-capybara-clicker-48.png" sizes="48x48" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <link rel="shortcut icon" href="https://capybara-clicker.com/imgs/logo-capybara-clicker-16.png" type="image/png" />
+    <meta
+        name="description"
+        content="Capybara Clicker is an endless clicker game with many achievements. This game challenges you to create a capybara galaxy by tapping continuously on a capybara."
+    />
+	<link rel="canonical" href="https://capybara-clicker.com">
+    <meta
+        name="msapplication-TileImage"
+        content="/imgs/logo-capybara-clicker-144.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="Capybara Clicker" />
+    <meta property="og:url" content="https://capybara-clicker.com" />
+    <meta property="og:title" content="Capybara Clicker" />
+    <meta
+        property="og:description"
+        content="Capybara Clicker is an endless clicker game with many achievements. This game challenges you to create a capybara galaxy by tapping continuously on a capybara."
+    />
+    <meta
+        property="og:image"
+        content="/imgs/logo-capybara-clicker.png"
+    />
+    <meta property="og:type" content="game" />
+    <meta property="twitter:url" content="https://capybara-clicker.com" />
+    <meta property="twitter:title" content="Capybara Clicker" />
+    <meta
+        property="twitter:description"
+        content="Capybara Clicker is an endless clicker game with many achievements. This game challenges you to create a capybara galaxy by tapping continuously on a capybara."
+    />
+    <meta
+        property="twitter:image"
+        content="/imgs/logo-capybara-clicker.png"
+    />
+	<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-BM0X1X1GQ9"></script>
+	<script>window.dataLayer = window.dataLayer || [];
+	 function gtag() {
+	 dataLayer.push(arguments);
+	 }
+	 gtag('js', new Date());
+
+	 gtag('config', 'G-BM0X1X1GQ9');</script>
+	
+
+	<link rel="stylesheet" href="https://capybara-clicker.com/style.css?v=1.1">
+    <style>
+		html {
+			box-sizing: border-box;
+			-ms-overflow-style: scrollbar
+		}
+		*, *::before, *::after {
+			box-sizing: inherit;
+		}
+        body {
+            margin: 0;
+            overflow: hidden
+			position: relative;
+        }
+		.popup-aboutgame{
+			width: 100%;
+		}
+		.btn-icon{
+			    color: red;
+		}
+        canvas {
+            display: block
+        }
+		
+		#aboutGame{
+			display: inline;
+			font-size: 13px;
+			color: #555;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		.ft-menu{
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			background: #eee;
+			padding: 3px 5px;
+			border-radius: 5px 0 0 0;
+			z-index: 100;
+		}
+		.ft-menu a{
+			font-size: 13px;
+			color: #555;
+		}
+		.new-games{
+			position: absolute;
+			top: 0;
+			left: auto;
+			background: #eee;
+			padding: 8px;
+			font-weight: bold;
+			border-bottom-right-radius: 5px;
+			z-index: 101;
+		}
+		.new-games a{
+			text-decoration: none;
+			color: #9d49d1;
+		}
+		.new-games a:hover{
+			color: #fb5f8a;
+		}
+    </style>
+    <!-- <script>
+        //var goFS = document.getElementById("goFS");
+        document.addEventListener("touchend", function () {
+
+            const elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                console.log("click"); 
+                elem.requestFullscreen()
+            }
+
+        }, false);
+    </script> -->
+    <!-- <script src="js/jquery.js"></script> -->
+    <script src="https://www.tutorialspoint.com/jquery/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+    <script src="https://capybara-clicker.com/bundle.js"></script>
+    <audio id="player" src="https://capybara-clicker.com/assets/soundbackground.mp3" loop></audio>
+    <audio id="player2" src="assets/cash.mp3"></audio>
+    <audio id="player3" src="assets/tap.mp3"></audio>
+    <script>
+        $(document).ready(function () {
+            document.addEventListener('click', musicPlay);
+
+            function musicPlay() {
+                document.getElementById('player').play();
+                document.removeEventListener('click', musicPlay);
+            }
+            // var elem = document.documentElement;
+
+            // /* When the openFullscreen() function is executed, open the video in fullscreen.
+            // Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */
+            // function openFullscreen() {
+            //     if (elem.requestFullscreen) {
+            //         elem.requestFullscreen();
+            //     } else if (elem.webkitRequestFullscreen) { /* Safari */
+            //         elem.webkitRequestFullscreen();
+            //     } else if (elem.msRequestFullscreen) { /* IE11 */
+            //         elem.msRequestFullscreen();
+            //     }
+            // }
+            $("a").on('click', function (event) {
+
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function () {
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+        });
+    </script>
+	
+	<main>
+		<div class="new-games">
+			<a href="/new" target="_blank">New games</a>
+		</div>
+		<div id="popupAboutGame" class="container-popup-aboutgame">
+			<div class="content-popup-aboutgame">
+				<button onclick="HiddenPopup()" class="btn-close-popup"><span class="btn-icon" >x</span> <span class="btn-text">Close</span></button>
+				<div class="popup-aboutgame">
+					<div class="popup-content">
+						<h1>Capybara Clicker</h1>
+						<h2>General information</h2>
+						<p>Hot on the heels of the success of other clicker games on the gaming market, the developer Euclides developed this game. As he expected, it attracted many players in the gaming community right after being launched in November 2022. The first impression of this game is its easy accessibility. This game is playable on the web browser and both PC and mobile devices are the best tools to access this game. This allows all players of all ages to access this game easily no matter where they are. Not only normal players but also streamers are keen on this game. Hundreds of videos about the game are uploaded and appeal to millions of viewers. Realizing the great potential of this game, the creator updated many new features on Mar 28, 2023, in order to bring the players a more interesting playing experience.</p>
+						<h2>The instruction for beginners playing Capybara Clicker</h2>
+						<p>On the surface, this game seems like it has everything that fans of idle games would want. It has not only simple controls but also addictive gameplay that captivates players for hours.<br />As you can see, there is a yellow capybara in the center of the screen. All you need to do is to tap on this capybara to generate more capybaras. Because your aim is to create a capybara galaxy, do not hesitate to tap constantly to produce as many capybaras as possible. Besides, remember to pay attention to the power bar at the left of the screen. If it is fulfilled, the number of capybaras will be doubled. Therefore, do not let this power bar empty. In addition, sometimes, a tiny capybara will appear and float around the screen. You need to tap on it to earn one point before it disappears. Keep in mind that the more capybaras you can earn, the faster you can expand your capybara empire.</p>
+						<p>Control: Click the left mouse button or tap directly on the screen to produce more capybaras.</p>
+						<h2>All upgrades in Capybara Clicker</h2>
+						<p>Unlocking upgrades is another important task to create a Capybara galaxy. You are required to unlock 16 upgrades and each upgrade offers a distinct advantage. Initially, all upgrades are locked. They will be unlocked during the game. You can purchase them after unlocking them. Here is the list of all upgrades, their functions, and some tips to unlock them.</p>
+						<h3>Cursor Upgrades</h3>
+						<p>The first type of upgrade is the cursor upgrade which not only helps to enhance your clicking efficiency but also automates your capybara production process. There are a total of 7 cursor upgrades in this game.</p>
+						<ul>
+						<li>Cursor: This upgrade will be unlocked after you generate 50 capybaras. If you want to raise the number of capybara for each click, you should buy this upgrade.</li>
+						<li>Auto Click: To unlock this upgrade, you need to earn 125 capybaras. Specifically, it will help you to click on the giant capybara automatically when you are offline.</li>
+						<li>Mr Clicker: You should try to earn 500 capybaras to unlock this upgrade. It will assist in raising by 5 capybaras per click.</li>
+						<li>President Clicker: To unlock this upgrade, you have to earn up to 12,000 capybaras. The number of capybaras earned with each click will rise by 100 capybaras after you buy this upgrade.</li>
+						<li>King Clicker: If you earn 90,000 capybaras, this upgrade will be unlocked. It will grant 1000 capybaras for each click.</li>
+						<li>Emperor Clicker: The next upgrade is Emperor Clicker which can be unlocked by 22 million capybaras. If you buy it, the number of capybaras earned with each click will rise by 9000 capybaras.</li>
+						<li>Pope Clicker: You must accumulate 300 million capybaras to unlock this upgrade. It helps to raise the number of capybaras earned with each click by 25,000 capybaras.</li>
+						<li>God Clicker: You need 1.8 billion capybaras if you want to unlock this upgrade. This is also one of the best cursor upgrades because it helps to raise 100,000 capybaras earned with each click.</li>
+						<li>The Clicker: This is the final cursor upgrade which can be unlocked with 2 trillion capybaras.</li>
+						</ul>
+						<h3>Building Upgrades</h3>
+						<p>Besides, you should unlock all 6 building upgrades. Investing in the building is the best way to increase the passive capybara generation. Therefore, they are also considered to be permanent upgrades in this game.</p>
+						<ul>
+						<li>Capybara Farm: This upgrade is your first step in your plan of building the Capybara planet. If you want to unlock this upgrade, do your best to generate 1100 capybaras. Then, purchase it to increase by 10 capybaras earned per second. Constructing a capybara farm also helps to raise the passive generation.</li>
+						<li>Capybara Pump: To generate more capybaras, you need to unlock this upgrade. It allows you to earn 200 capybaras per second.</li>
+						<li>Capybara Factory: This is the next building you must construct. To unlock the Capybara Factory, you must get 315,000 capybaras to unlock this booster. If you invest it, you can earn 5000 capybaras per second.</li>
+						<li>Capybara Pyramid: The next step of your plan is to build a Capybara Pyramid that can generate 100,000 capybaras per second.</li>
+						<li>Capybara Temples: If you want to get more capybaras, you must unlock and invest in the Capybara Temple.</li>
+						<li>Capybara Power Plant: The final building upgrade is Capybara Power Plant which can produce 5 million capybaras per second. However, to unlock it, you must accumulate enough 3 billion capybaras.</li>
+						</ul>
+						<h3>Planet Upgrades</h3>
+						<p>Finally, you should try to unlock three planet upgrades which also have the same function as the building upgrades.</p>
+						<ul>
+						<li>Capybara Earth: The first planet upgrade is Capybara Earth which can be unlocked by earning 30 trillion capybaras. This planet can help you produce 10 million capybaras.</li>
+						<li>Capybara Sun: If you can accumulate 100 trillion capybaras and unlock the Capybara Sun, it means that you are getting closer to your ultimate goal. Using this upgrade will help you raise 30 million capybaras per click.</li>
+						<li>Capybara Galaxy: Your ultimate objective is to unlock this upgrade which is Capybara Galaxy. Do your best to accumulate 1,000 trillion capybaras to get it.</li>
+						</ul>
+						<h2>Capybara Clicker Most Effective Tactic Guide</h2>
+						<p>To build a Capybara galaxy faster, you must strategize, optimize, and make wise choices. Here are some effective tips that can help you maximize your capybara production and elevate your gameplay experience in the game.</p>
+						<h3>Start with boosting your capybara count</h3>
+						<p>At the start of the game, you should focus on raising your capybara count. Actively click the giant capybara to accumulate capybaras quickly. This allows you to unlock initial upgrades faster. After unlocking them, you also need to purchase the cursor upgrades which help to raise the number of capybaras earned with each click first.</p>
+						<h3>Expand your buildings in the game</h3>
+						<p>The building upgrades such as Capybara Factory, Capybara Farm, Capybara Temple, Capybara Pump, or Capybara Pyramid are essential for the passive capybara generation. Therefore, you need to invest your capybaras wisely in acquiring and upgrading these buildings to raise your overall capybara output. Moreover, you also need to balance the acquisition of different buildings. This is a key to maintaining a steady flow of capybaras.</p>
+						<h3>Utilize booster buttons</h3>
+						<p>At the top of the screen, you can see two booster buttons. If you click on the X2 button, the number of capybara earned with each click will be doubled. If you click on the Free button, you will receive a lot of capybaras for free. Note that the number of capybaras you receive will increase whenever you click on this button. It is possible to say that these buttons are really useful for you, but the number of times you can use them is limited. Therefore, you should use them when necessary. I advise you to take advantage of these buttons at the start of the game because you need many capybaras to unlock initial upgrades at this time.</p>
+						<h3>Do not turn off the game</h3>
+						<p>After buying the upgrade Auto Click, the passive capybara production will start. It means that you still can earn more capybara when you do not tap on the giant capybara. If you want to accumulate more capybaras, I suggest you should leave the game running even when you do not play it. With enough upgrades, capybaras literally make themselves. You can come back into the game to check the total of the capybaras and purchase some upgrades. Then, you can do other tasks without worrying about the capybara production in the game.</p>
+						<h2>Appealing things of Capybara Clicker</h2>
+						<h3>Various skins</h3>
+						<p>The first impressive feature of this game is its collection of capybara skins which sets this game apart from other clicker games. At the start of the game, all capybara skins are locked. They will be unlocked after you accumulate enough capybaras and unlock a certain upgrade. Here are some effective strategies to get all skins in this game.</p>
+						<ul>
+						<li>Equilibrist Capybara: This is the first capybara you get after earring 50 capybara.</li>
+						<li>Witch Capybara: After catching 1 golden capybara, this skin will be unlocked.</li>
+						<li>King Capybara: If you can spend 2000 capybaras and reach a level 100 upgrade, this skin will be unlocked.</li>
+						<li>Noel Capybara: To get this skin, you must generate 500 million capybaras and unlock the snowing weather.</li>
+						<li>Umbrella Capybara: Earning 10 million capybaras is the best way to unlock the umbrella capybara skin.</li>
+						<li>Capybara And Friend: If you can get 1 million capybaras, this skin will be unlocked.</li>
+						<li>Super Capybara: This skin will be unlocked after you accumulate 10 million capybaras.</li>
+						<li>Robinhood Capybara: This is a skin inspired by a famous cartoon character named Robinhood. It can be unlocked after you get 10 million capybaras.</li>
+						<li>Galactic Capybara: If you want to get the Galactic Capybara, you must earn at least 30 thousand trillion capybaras.</li>
+						</ul>
+						<h3>Different weathers</h3>
+						<p>Besides skins, this game also offers many kinds of weather that can be unlocked during the game. There are a total of 5 weathers in this game. They are Normal, Raining, Winding, Star Rain, and Snowing. In fact, these weathers do not affect the capybara production in this game. However, they will enhance your playing experience. Therefore, they still are considered to be an interesting feature of this game.</p>
+						<h3>All achievements</h3>
+						<p>Finally, achievements in this game are a significant aspect of the game, offering goals and milestones for you to strive towards. You will not find the list of achievements in the menu. Instead, these achievements will appear after you complete them. Here are some dominant features you can aim for in this game.</p>
+						<ul>
+						<li>Centenary Click: You must click 100 times to get this achievement.</li>
+						<li>A Thousand Capybaras: To unlock this achievement, you must try to get 1000 capybaras.</li>
+						<li>Sugoi Desu!: This achievement will be unlocked after you reach the Level 100 upgrade.</li>
+						<li>So Powerful!: Try your best to get 100 click Power to earn this achievement.</li>
+						<li>Great: This achievement can be completed by reaching Level 50 Upgrade.</li>
+						<li>Waste Of Capybara: You will get this achievement after spending 2000 capybaras.</li>
+						<li>The Legendary Golden Capybara: Do your best to catch a golden capybara to earn this achievement.</li>
+						<li>Capybara Investments: You must spend 4000 capybaras if you want to complete this achievement.</li>
+						<li>Millionairy Capybara: To complete this achievement, you must try to earn 1 million capybaras.</li>
+						<li>What The Power?: This achievement will be unlocked after you get 1 million click Power.</li>
+						<li>Billionaire Capybara: If you want to complete this achievement, do your best to earn 1 billion capybaras.</li>
+						<li>Retirement: This achievement will be unlocked after you get 50,000 capybaras per second.</li>
+						<li>Lazy Rich: Try to get 5,000 capybaras per second to complete this achievement.</li>
+						<li>Passive Income: get 500 capybara per second.</li>
+						<li>Trillionary Capybara: It is hard to earn this achievement because you must earn 1 trillion capybaras.</li>
+						</ul>
+						<h2>Conclusion</h2>
+						<p>In a nutshell, Capybara Clicker has carved a special place in the gaming world with its engaging gameplay, strategic decision-making, addictive progression, enduring appeal, and vibrant community. Through the simple act of clicking a giant capybara, you embark on an exciting journey of capybara generation, unlocking upgrades, and building a capybara galaxy. Whether you're an active clicker or a passive optimizer, this game offers a delightful and satisfying experience that keeps you coming back for more. So, grab your cursor and immerse yourself in the irresistible world of capybaras, where capybaras reign supreme.</p>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+		<section></section>
+	</main>
+
+	<div class="ft-menu">
+		<p id="aboutGame" style=" -webkit-user-select: none; user-select: none; ">About Game</p>
+		<a href="/about-us" rel="nofollow" class="name-menu-footer" target="_blank"> About Us</a>
+		<a href="/contact-us" rel="nofollow" class="name-menu-footer" target="_blank"> Contact Us</a>
+		<a href="/terms-and-conditions" rel="nofollow" class="name-menu-footer" target="_blank"> Terms & Conditions</a>
+		<a href="/privacy-policy" rel="nofollow" class="name-menu-footer" target="_blank"> Privacy Policy</a>
+	</div>
+	<script>
+		"use strict";
+		document.addEventListener('DOMContentLoaded', function () {
+		let aboutGame = document.getElementById('aboutGame');
+		let popupAboutGame = document.getElementById('popupAboutGame');
+		let domain = window.location;		
+		aboutGame.addEventListener('click', function () {
+			popupAboutGame.classList.add('set-scale');
+		});
+		
+		popupAboutGame.classList.add('set-scale');	
+		if((domain.ancestorOrigins)!==undefined){
+			if((domain.ancestorOrigins.length!==0)){
+				popupAboutGame.classList.remove('set-scale');
+			}
+		}
+		});	
+		function HiddenPopup() {
+			popupAboutGame.classList.remove('set-scale');
+		}
+	</script>
+</body>
+
+</html>
